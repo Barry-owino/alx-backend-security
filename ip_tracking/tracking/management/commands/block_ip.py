@@ -1,0 +1,17 @@
+from django.core.management.base import BaseCommand
+from tracking.models import blockedIP
+
+class Command(BaseCommand):
+    help = "Add an IP address to the BlockedIP list"
+
+    def add_arguments(self, parser):
+        parser.add_argument("ip_address", type=str, help="The IP address to block")
+
+    def handle(self, *arg, **kwargs):
+        ip_address = kwargs["ip_address"]
+        blocked, created = BlockedIP.objects.get_or_create(ip_address=ip_address)
+        if created:
+            self.stdout.write(self.style.SUCCESS(f"Successfully blocked IP: {ip_address}"))
+        else:
+            self.stdout.write(self.style.WARNING("fIP {ip_address} is already blocked))
+
