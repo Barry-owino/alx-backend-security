@@ -10,7 +10,7 @@ class BlockedIPMiddleware:
         ip = request.META.get("REMOTE_ADDR", "")
         #check if ip is in blocklist
         if BlockedIP.objects.filter(ip_address=ip).exists():
-            return HttpsResponseForbidden("Your IP has been blocked.")
+            return HttpResponseForbidden("Your IP has been blocked.")
         return self.get_response(request)
 
 class IPTrackingMiddleware:
