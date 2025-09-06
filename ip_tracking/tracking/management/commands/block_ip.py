@@ -1,5 +1,5 @@
 from django.core.management.base import BaseCommand
-from tracking.models import blockedIP
+from tracking.models import BlockedIP
 
 class Command(BaseCommand):
     help = "Add an IP address to the BlockedIP list"
