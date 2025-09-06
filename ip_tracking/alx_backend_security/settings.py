@@ -50,6 +50,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'tracking.middleware.BlockedIPMiddleware',
     'tracking.middleware.IPTrackingMiddleware',
+    'tracking.middleware.GeoLocationMiddleware',
 ]
 
 ROOT_URLCONF = 'alx_backend_security.urls'
